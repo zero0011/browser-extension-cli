@@ -56,6 +56,58 @@ function createExtension(name) {
   console.log(`Create a new Chrome extension in ${chalk.green(root)}`);
   console.log();
 
+  const appDetails = {
+    version: '0.0.1',
+    description: 'My Browser Extension'
+  };
+
+  // Setup the package file
+  let appPackage = Object.assign(
+    {},
+    {
+      name: name,
+    },
+    appDetails,
+    {
+      private: true
+    }
+  );
+
+  appPackage.scripts = {
+    watch: 'webpack --mode=development --watch --config config/webpack.config.js',
+    build: 'webpack --mode=production --config config/webpack.config.js'
+  }
+
+  // Create package file in project directory
+  fs.writeFileSync(
+    path.join(root, 'package.json'),
+    JSON.stringify(appPackage, null, 2)
+  );
+
+  let command = 'npm';
+  let args = ['install', '']
+
+  // Add devDependencies
+  args.push(
+    'webpack@^4.0.0',
+    'webpack-cli@^3.0.0',
+    'webpack-merge@^5.0.0',
+    'copy-webpack-plugin@^6.0.0',
+    'size-plugin@^2.0.0',
+    'mini-css-extract-plugin@^0.10.0',
+    'css-loader@^4.0.0',
+    'file-loader@^6.0.0'
+  );
+
+  console.log('Installing packages. This might take a couple of minutes.');
+  console.log(
+    `Installing ${chalk.cyan('webpack')}, ${chalk.cyan(
+      'webpack-cli'
+    )} and few more...`
+  );
+  console.log();
+
+  // Install package dependencies
   
 }
 
