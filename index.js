@@ -10,6 +10,7 @@ const spawn = require('cross-spawn');
 const commander = require('commander');
 
 const packageFile = require('./package.json');
+const { checkAppName } = require('./utils/name');
 
 let projectName;
 
@@ -20,7 +21,7 @@ const program = new commander.Command(packageFile.name)
   .action((name) => {
     projectName = name;
   })
-  .option('default', 'Create project with Dom')
+  .option('-default', 'Create project with Dom')
   .option('-react', 'Create project with react')
   .option('-vue', 'Create project with vue')
   .on('--help', () => {
@@ -44,3 +45,21 @@ if (typeof projectName === 'undefined') {
   );
   process.exit(1);
 }
+
+// TODO:创建脚手架函数
+function createExtension(name) {
+  const root = path.resolve(name);
+
+  checkAppName(name);
+  fs.ensureDirSync(name);
+
+  console.log(`Create a new Chrome extension in ${chalk.green(root)}`);
+  console.log();
+
+  
+}
+
+
+
+
+createExtension(projectName);

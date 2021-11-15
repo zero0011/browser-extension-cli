@@ -23,3 +23,4 @@ browser-extension-cli
 # Bugs
 
 - [] 无法支持传递空项目名,报错提示用户需要一个合适的项目名称
+- [] 如何支持使用react开发一个项目
