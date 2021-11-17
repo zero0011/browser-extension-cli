@@ -7,7 +7,8 @@ const fs = require("fs-extra");
 const chalk = require("chalk");
 const spawn = require("cross-spawn");
 const commander = require("commander");
-
+const generateReadme = require('./utils/readme');
+const tryGitInit = require('./utils/git-init');
 const packageFile = require("./package.json");
 const { checkAppName, prettifyAppName } = require("./utils/name");
 
@@ -175,8 +176,41 @@ function createExtension(name) {
     {
       manifest_version: 2,
     },
-    manifestDetails
+    manifestDetails,
+    {
+      icons: {
+        16: 'icons/icon_16.png'
+      },
+      background: {}
+    }
   )
+
+  appManifest = Object.assign(
+    {},
+    appManifest,
+    {
+      browser_action: {
+        default_title: manifestDetails.name,
+        default_popup: 'popup.html',
+      },
+      permissions: ['storage'],
+      content_scripts: []
+    }
+  )
+
+  // Create manifest file in project directory
+  fs.writeFileSync(
+    path.join(root, 'public', 'manifest.json'),
+    JSON.stringify(appManifest, null, 2)
+  )
+
+  // Generate a README file
+  if (generateReadme(root)) {
+    console.log('Generated a README file.');
+    console.log();
+  }
+
+  // Initialize a git repository
 
 
 }
