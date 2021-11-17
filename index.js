@@ -57,6 +57,7 @@ function createExtension(name) {
   const appDetails = {
     version: "0.0.1",
     description: "My Browser Extension",
+    main: "index.js",
   };
 
   // Setup the package file
@@ -75,6 +76,14 @@ function createExtension(name) {
     watch:
       "webpack --mode=development --watch --config config/webpack.config.js",
     build: "webpack --mode=production --config config/webpack.config.js",
+    clean: "rm -rf dist",
+    test: "npx jest",
+    style: 'prettier --write "index.js"',
+  };
+
+  appPackage.repository = {
+    type: "git",
+    url: "https://github.com/zero0011/browser-extension-cli",
   };
 
   // Create package file in project directory
@@ -84,10 +93,10 @@ function createExtension(name) {
   );
 
   let command = "npm";
-  let args = ["install", ""];
+  let argsDev = ["install", "--save-dev"];
 
   // Add devDependencies
-  args.push(
+  argsDev.push(
     "webpack@^4.0.0",
     "webpack-cli@^3.0.0",
     "webpack-merge@^5.0.0",
@@ -95,8 +104,18 @@ function createExtension(name) {
     "size-plugin@^2.0.0",
     "mini-css-extract-plugin@^0.10.0",
     "css-loader@^4.0.0",
-    "file-loader@^6.0.0"
+    "file-loader@^6.0.0",
+    "jest",
+    "ts-jest",
+    "ts-loader",
+    "typescript",
+    "prettier"
   );
+
+  let args = ["install", "--save"];
+
+  // Add dependencies
+  args.push("react", "react-dom");
 
   console.log("Installing packages. This might take a couple of minutes.");
   console.log(
@@ -106,7 +125,19 @@ function createExtension(name) {
   );
   console.log();
 
+  // Install package devDependencies
+  const procDev = spawn.sync(command, argsDev, { cwd: root, stdio: "inherit" });
+  if (procDev.status !== 0) {
+    console.error(`\`${command} ${argsDev.join(" ")}\` failed`);
+    return;
+  }
+
   // Install package dependencies
+  const proc = spawn.sync(command, args, { cwd: root, stdio: "inherit" });
+  if (proc.status !== 0) {
+    console.error(`\`${command} ${args.join(" ")}\` failed`);
+    return;
+  }
 }
 
 createExtension(projectName);
