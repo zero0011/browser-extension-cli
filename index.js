@@ -9,7 +9,7 @@ const spawn = require("cross-spawn");
 const commander = require("commander");
 
 const packageFile = require("./package.json");
-const { checkAppName } = require("./utils/name");
+const { checkAppName, prettifyAppName } = require("./utils/name");
 
 let projectName;
 
@@ -138,6 +138,48 @@ function createExtension(name) {
     console.error(`\`${command} ${args.join(" ")}\` failed`);
     return;
   }
+
+
+  // Copy template files to project directory
+  let templateName = 'popup';
+
+  fs.copySync(path.resolve(__dirname, 'templates', templateName), root);
+
+  // Copy common webpack configuration file
+  fs.copySync(path.resolve(__dirname, 'config'), path.join(root, 'config'));
+
+  // Rename gitignore after the fact to prevent npm from renaming it to .npmignore
+  // Source: https://github.com/facebook/create-react-app/blob/47e9e2c7a07bfe60b52011cf71de5ca33bdeb6e3/packages/react-scripts/scripts/init.js#L138
+
+  try {
+    fs.moveSync(
+      path.join(root, 'gitignore'),
+      path.join(root, '.gitignore'),
+      []
+    );
+  } catch (err) {
+    throw err;
+  }
+
+
+  // Setup the manifest file
+  const manifestDetails = Object.assign(
+    {},
+    {
+      name: prettifyAppName(name),
+    },
+    appDetails,
+  );
+
+  let appManifest = Object.assign(
+    {},
+    {
+      manifest_version: 2,
+    },
+    manifestDetails
+  )
+
+
 }
 
 createExtension(projectName);
