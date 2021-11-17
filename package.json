@@ -13,7 +13,8 @@
   "scripts": {
     "start": "node index.js",
     "test": "jest",
-    "style": "prettier --write \"index.js\""
+    "style": "prettier --write \"index.js\"",
+    "clean": "rm -rf dist"
   },
   "keywords": [
     "browser",

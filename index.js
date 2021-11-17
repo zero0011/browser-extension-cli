@@ -105,11 +105,11 @@ function createExtension(name) {
     "mini-css-extract-plugin@^0.10.0",
     "css-loader@^4.0.0",
     "file-loader@^6.0.0",
-    "jest",
-    "ts-jest",
-    "ts-loader",
-    "typescript",
-    "prettier"
+    "jest@^27.2.1",
+    "ts-jest@^27.0.5",
+    "ts-loader@^8.0.0",
+    "typescript@^4.4.3",
+    "prettier@^2.2.1"
   );
 
   let args = ["install", "--save"];
