@@ -11,7 +11,8 @@
     "browser-extension-cli": "index.js"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "style": "prettier --write \"index.js\""
   },
   "keywords": [
     "browser",
