@@ -6,12 +6,12 @@ Browser plug-in development framework.and The CLI support you devlop Broswer Ext
 
 ```sh
 npm install -g browser-extension-cli
-browser-extension-cli
+browser-extension-cli project-directory
 ```
 
 
 # todolist
-- [] 初始化项目
+- [x] 初始化项目
 - [] 支持eslint代码规范
 - [] 支持原生 html,css,js 开发浏览器插件
 - [] 支持使用 React 开发浏览器插件

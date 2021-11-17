@@ -24,7 +24,7 @@ const program = new commander.Command(packageFile.name)
   .option("-react", "Create project with react")
   .option("-vue", "Create project with vue")
   .on("--help", () => {
-    console.log(`    Only ${chalk.green("<projectName>")} is required.`);
+    console.log(`    Only ${chalk.green("<project-directory>")} is required.`);
   })
   .parse(process.argv);
 
@@ -73,8 +73,7 @@ function createExtension(name) {
   );
 
   appPackage.scripts = {
-    watch:
-      "webpack --mode=development --watch --config config/webpack.config.js",
+    watch: "webpack --mode=development --watch --config config/webpack.config.js",
     build: "webpack --mode=production --config config/webpack.config.js",
     clean: "rm -rf dist",
     test: "npx jest",

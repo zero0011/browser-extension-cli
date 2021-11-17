@@ -44,7 +44,7 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "^4.1.2",
-    "commander": "^8.3.0",
+    "commander": "^3.0.1",
     "cross-spawn": "^7.0.3",
     "fs-extra": "^10.0.0",
     "validate-npm-package-name": "^3.0.0"
