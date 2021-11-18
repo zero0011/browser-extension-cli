@@ -22,7 +22,8 @@ browser-extension-cli project-directory
 
 # Bugs
 
-- [] 无法支持传递空项目名,报错提示用户需要一个合适的项目名称
+- [x] 无法支持传递空项目名,报错提示用户需要一个合适的项目名称
+- [] 读取readme.md文件报错
 - [] 如何支持使用react开发一个项目
 
 
