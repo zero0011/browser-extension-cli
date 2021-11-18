@@ -50,6 +50,7 @@
     "validate-npm-package-name": "^3.0.0"
   },
   "devDependencies": {
+    "eslint": "^8.2.0",
     "prettier": "^2.4.1"
   }
 }

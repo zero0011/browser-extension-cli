@@ -32,6 +32,7 @@ browser-extension-cli project-directory
 
 1. 如何在项目中支持 React框架的应用开发？为什么配置了webpack但是没有效果？
 
+ts-loader, 支持使用 tsx 来开发项目
 
 2. #!/usr/bin/env node 的作用是什么？
 在写npm包的时候须要在脚本的第一行写上#!/usr/bin/env node ，用于指明该脚本文件要使用node来执行。node
@@ -44,3 +45,9 @@ PS： 该命令必须放在第一行， 否者不会生效n
 
 child_process 中 execSync API并没有效果。
 有效果,只不过把 stdio(标准输入输出) 设置为 ignore,所以看出什么效果
+
+4. 如何支持 eslint代码规范 ？
+
+配置 .eslintrc 文件
+
+5. 如何更改代码时，自动使用 eslint 格式化代码 ？
