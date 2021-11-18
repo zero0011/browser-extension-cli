@@ -38,3 +38,8 @@ browser-extension-cli project-directory
 /usr/bin/env 用来告诉用户到path目录下去寻找node，#!/usr/bin/env node 可让系统动态的去查找node，已解决不一样机器不一样用户设置不一致问题。web
 
 PS： 该命令必须放在第一行， 否者不会生效n
+
+3. child_process Node模块如何使用 ？
+
+child_process 中 execSync API并没有效果。
+有效果,只不过把 stdio(标准输入输出) 设置为 ignore,所以看出什么效果
