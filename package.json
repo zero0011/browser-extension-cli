@@ -1,70 +1,69 @@
 {
-  "name": "browser-extension-cli",
-  "version": "0.0.1",
-  "description": "The CLI support you devlop Broswer Extension by React and Vue",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/zero0011/browser-extension-cli"
-  },
-  "main": "index.js",
-  "bin": {
-    "browser-extension-cli": "index.js"
-  },
-  "scripts": {
-    "start": "node index.js",
-    "test": "jest",
-    "style": "prettier --write \"(*.js|**/*.js)\"",
-    "lint": "eslint --fix \"index.js\"",
-    "clean": "rm -rf dist"
-  },
-  "keywords": [
-    "browser",
-    "chrome",
-    "extension",
-    "cli",
-    "javascript",
-    "node",
-    "webpack",
-    "google",
-    "template",
-    "popup",
-    "override-page",
-    "devtools"
-  ],
-  "author": {
-    "name": "zsshuaizhu",
-    "email": "zsshuaizhu@tencent.com",
-    "url": "https://juejin.cn/user/1714893871395261"
-  },
-  "bugs": {
-    "url": "https://github.com/zero0011/browser-extension-cli/issues"
-  },
-  "engines": {
-    "node": ">=8"
-  },
-  "license": "MIT",
-  "dependencies": {
-    "chalk": "^4.1.2",
-    "commander": "^3.0.1",
-    "cross-spawn": "^7.0.3",
-    "fs-extra": "^10.0.0",
-    "validate-npm-package-name": "^3.0.0"
-  },
-  "devDependencies": {
-    "eslint": "^8.2.0",
-    "husky": "^7.0.4",
-    "lint-staged": "^12.0.3",
-    "prettier": "^2.4.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
+    "name": "browser-extension-cli",
+    "version": "0.0.1",
+    "description": "The CLI support you devlop Broswer Extension by React and Vue",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/zero0011/browser-extension-cli"
+    },
+    "main": "index.js",
+    "bin": {
+        "browser-extension-cli": "index.js"
+    },
+    "scripts": {
+        "start": "node index.js",
+        "test": "jest",
+        "style": "prettier --write \"*.js|**/*.js\"",
+        "clean": "rm -rf dist"
+    },
+    "keywords": [
+        "browser",
+        "chrome",
+        "extension",
+        "cli",
+        "javascript",
+        "node",
+        "webpack",
+        "google",
+        "template",
+        "popup",
+        "override-page",
+        "devtools"
+    ],
+    "author": {
+        "name": "zsshuaizhu",
+        "email": "zsshuaizhu@tencent.com",
+        "url": "https://juejin.cn/user/1714893871395261"
+    },
+    "bugs": {
+        "url": "https://github.com/zero0011/browser-extension-cli/issues"
+    },
+    "engines": {
+        "node": ">=8"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "chalk": "^4.1.2",
+        "commander": "^3.0.1",
+        "cross-spawn": "^7.0.3",
+        "fs-extra": "^10.0.0",
+        "validate-npm-package-name": "^3.0.0"
+    },
+    "devDependencies": {
+        "eslint": "^8.2.0",
+        "husky": "^7.0.4",
+        "lint-staged": "^12.0.3",
+        "prettier": "^2.4.1"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "(*.{js,json,yml,yaml,css,scss,ts,tsx,md}|**/*.js)": [
+            "prettier --write",
+            "git add"
+        ]
     }
-  },
-  "lint-staged": {
-    "(*.{js,json,yml,yaml,css,scss,ts,tsx,md}|**/*.js)": [
-      "prettier --write",
-      "git add"
-    ]
-  }
 }
