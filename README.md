@@ -13,6 +13,7 @@ browser-extension-cli project-directory
 
 -   [x] 初始化项目
 -   [x] 支持 eslint 代码规范
+-   [x] 支持 prettierrc 格式化代码
 -   [] 支持原生 html,css,js 开发浏览器插件
 -   [] 支持使用 React 开发浏览器插件
     -   [] 支持使用命令 options 设置 React 开发

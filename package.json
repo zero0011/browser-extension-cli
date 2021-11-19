@@ -13,7 +13,7 @@
     "scripts": {
         "start": "node index.js",
         "test": "jest",
-        "style": "prettier --write \"*.js|**/*.js\"",
+        "style": "prettier --write 'index.js' '{config,templates,utils}/**/*.js'",
         "clean": "rm -rf dist"
     },
     "keywords": [
@@ -61,7 +61,7 @@
         }
     },
     "lint-staged": {
-        "(*.{js,json,yml,yaml,css,scss,ts,tsx,md}|**/*.js)": [
+        "*.{js,json,yml,yaml,css,scss,ts,tsx,md}": [
             "prettier --write",
             "git add"
         ]
