@@ -14,6 +14,7 @@
     "start": "node index.js",
     "test": "jest",
     "style": "prettier --write \"index.js\"",
+    "lint": "eslint --fix \"src/index.js\"",
     "clean": "rm -rf dist"
   },
   "keywords": [
@@ -61,8 +62,8 @@
     }
   },
   "lint-staged": {
-    "src/**/*.js": [
-      "eslint --fix -ext .js",
+    "src/*.js": [
+      "eslint --fix .js",
       "prettier --write",
       "git add"
     ]
