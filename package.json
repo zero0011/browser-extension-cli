@@ -13,8 +13,8 @@
   "scripts": {
     "start": "node index.js",
     "test": "jest",
-    "style": "prettier --write \"index.js\"",
-    "lint": "eslint --fix \"src/index.js\"",
+    "style": "prettier --write \"(*.js|**/*.js)\"",
+    "lint": "eslint --fix \"index.js\"",
     "clean": "rm -rf dist"
   },
   "keywords": [
@@ -62,8 +62,7 @@
     }
   },
   "lint-staged": {
-    "src/*.js": [
-      "eslint --fix .js",
+    "(*.{js,json,yml,yaml,css,scss,ts,tsx,md}|**/*.js)": [
       "prettier --write",
       "git add"
     ]
