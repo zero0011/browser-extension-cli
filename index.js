@@ -74,9 +74,8 @@ function createExtension(name) {
   );
 
   appPackage.scripts = {
-    watch:
-      'webpack --mode=development --watch --config config/webpack.config.js',
-    build: 'webpack --mode=production --config config/webpack.config.js',
+    watch: 'webpack --mode=development --config config/webpack.dev.js',
+    build: 'webpack --mode=production --config config/webpack.prod.js',
     clean: 'rm -rf dist',
     test: 'npx jest',
     style: 'prettier --write "index.js"',
@@ -154,16 +153,6 @@ function createExtension(name) {
   // Rename gitignore after the fact to prevent npm from renaming it to .npmignore
   // Source: https://github.com/facebook/create-react-app/blob/47e9e2c7a07bfe60b52011cf71de5ca33bdeb6e3/packages/react-scripts/scripts/init.js#L138
 
-  try {
-    fs.moveSync(
-      path.join(root, 'gitignore'),
-      path.join(root, '.gitignore'),
-      []
-    );
-  } catch (err) {
-    throw err;
-  }
-
   // Setup the manifest file
   const manifestDetails = Object.assign(
     {},
@@ -196,6 +185,11 @@ function createExtension(name) {
     content_scripts: [],
   });
 
+  // Create project directory
+  fs.mkdirSync(
+    path.join(root, 'public')
+  )
+
   // Create manifest file in project directory
   fs.writeFileSync(
     path.join(root, 'public', 'manifest.json'),
@@ -203,7 +197,7 @@ function createExtension(name) {
   );
 
   // Generate a README file
-  if (generateReadme(root)) {
+  if (generateReadme(root, name)) {
     console.log('Generated a README file.');
     console.log();
   }
@@ -212,6 +206,16 @@ function createExtension(name) {
   if (tryGitInit(root, name)) {
     console.log();
     console.log('Initialized a git repository.');
+  }
+
+  try {
+    fs.moveSync(
+      path.join(root, 'gitignore'),
+      path.join(root, '.gitignore'),
+      []
+    );
+  } catch (err) {
+    throw err;
   }
 
   console.log(`Success! Created ${name} at ${root}`);
