@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+  "name": "My Browser-exten",
+  "version": "0.0.1",
+  "description": "My Browser Extension",
+  "main": "index.js",
+  "background": {},
+  "browser_action": {
+    "default_title": "My Browser-exten",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts": []
+}

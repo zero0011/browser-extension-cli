@@ -105,3 +105,5 @@ rules: [
 {
   "presets": ["@babel/env", "@babel/react"]
 }
+
+## 9. 目前webpack虽然支持 react，但是打包出来的文件太大了，可以使用压缩，减少发布体积 ？
