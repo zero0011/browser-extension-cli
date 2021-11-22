@@ -76,3 +76,32 @@ eslint 支持几种配置文件
 EditorConfig 包含一个用于定义代码格式的文件和一批编辑器插件，这些插件是让编辑器读取配置文件并以此来格式化代码。
 
 ## 7. .prettierrc 配置文件的作用 ？
+
+
+## 8.  webpack 如何支持 react 开发？
+
+1. 安装 react react-dom
+npm i react react-dom --save
+
+2. 安装babel解析 jsx语法
+
+npm install babel babel-cli babel-loader --save-dev
+
+3. 支持 react 和 es6语法
+npm i @babel/preset-env  @babel/preset-react --save-dev
+
+4. 配置webpack
+
+rules: [
+  {
+    test: /\.(js|jsx)$/,
+    loader: 'babel-loader',
+    exclude: /node_modules/
+  }
+]
+
+5. 配置 .babelrc 文件
+
+{
+  "presets": ["@babel/env", "@babel/react"]
+}
