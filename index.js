@@ -186,9 +186,7 @@ function createExtension(name) {
   });
 
   // Create project directory
-  fs.mkdirSync(
-    path.join(root, 'public')
-  )
+  fs.mkdirSync(path.join(root, 'public'));
 
   // Create manifest file in project directory
   fs.writeFileSync(
